@@ -1,18 +1,11 @@
-import React, { useState } from 'react'
-import Form from '../../../components/SignIn'
+import React, {useState} from 'react'
 import { Formik } from 'formik'
+import Form from '../../../components/SignIn'
 import * as yup from 'yup';
 
 const validationSchema = yup.object().shape({
     email: yup.string().email().required(),
-    password: yup.string().required().test(
-        "regex",
-        "Password must be min 8 characters, and have 1 Special Character, 1 Uppercase, 1 Number and 1 Lowercase",
-        val => {
-          let regExp = new RegExp("^(?=.*\\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,}$");
-          return regExp.test(val);
-        }
-      )
+    password: yup.string().min(6).required()
 })
 
 const LoginForm = () => {
@@ -22,7 +15,7 @@ const LoginForm = () => {
         <React.Fragment>
             <Formik
                 component={Form}
-                initialValues={{ email, password }}
+                initialValues={{email, password}}
                 validationSchema={validationSchema}
                 validateOnBlur={true}
                 validateOnChange={false}
@@ -38,5 +31,4 @@ const LoginForm = () => {
         </React.Fragment>
     )
 }
-
 export default LoginForm
