@@ -8,7 +8,9 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
-import Link from 'next/link'
+import Link from 'next/link';
+import SocialSignIn from '../icons/social-sign-in'
+
 
 const useStyles = makeStyles(theme => ({
     avatar: {
@@ -21,7 +23,7 @@ const useStyles = makeStyles(theme => ({
     },
     submit: {
         margin: theme.spacing(3, 0, 2),
-    },
+    }
 }));
 
 export default function SignIn({ values, handleSubmit, handleChange, handleBlur, errors, touched }) {
@@ -91,6 +93,7 @@ export default function SignIn({ values, handleSubmit, handleChange, handleBlur,
                     </Grid>
                 </Grid>
             </form>
+            <SocialSignIn />
         </>
     );
 }
