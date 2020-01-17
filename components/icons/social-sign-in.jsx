@@ -33,9 +33,6 @@ const SocialSignIn = () => {
                 <FacebookIcon className={classes.extendedIcon} />
                 Facebook
             </Fab>
-            <IconButton variant="primary" aria-label="delete">
-                <GitHubIcon />
-            </IconButton>
             <Fab
                 variant="extended"
                 size="medium"
@@ -46,6 +43,9 @@ const SocialSignIn = () => {
                 {/* <TwitterIcon className={classes.extendedIcon} /> */}
                 Twitter
             </Fab>
+            <IconButton variant="primary" aria-label="delete">
+                <GitHubIcon />
+            </IconButton>
         </div>
     )
 }
