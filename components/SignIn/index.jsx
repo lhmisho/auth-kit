@@ -28,8 +28,6 @@ const useStyles = makeStyles(theme => ({
 
 export default function SignIn({ values, handleSubmit, handleChange, handleBlur, errors, touched }) {
     const classes = useStyles();
-    errors.email && touched.email && console.log(errors.email)
-    errors.password && touched.password && console.log(errors.password)
     return (
         <>
 
