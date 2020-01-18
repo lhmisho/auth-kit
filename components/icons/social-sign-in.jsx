@@ -22,7 +22,7 @@ const useStyles = makeStyles(theme => ({
 const SocialSignIn = () => {
     let classes = useStyles()
     return (
-        <div classNam={classes.root}>
+        <div className={classes.root}>
             <Fab
                 variant="extended"
                 size="medium"

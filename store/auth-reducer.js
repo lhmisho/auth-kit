@@ -1,4 +1,8 @@
 import Axios from 'axios'
+const authClient = Axios.create({
+    baseURL: process.env.API_BASE_URL
+});
+
 
 
 export const LOGIN = 'LOGIN'
@@ -10,22 +14,26 @@ export const ERROR = 'ERROR'
 
 const url = ""
 
-export const loading = (isLoading) => ({type: LOADING, payload: isLoading})
-export const catchError = (error) => ({type: ERROR, payload: error})
+export const loading = (isLoading) => ({ type: LOADING, payload: isLoading })
+export const catchError = (error) => ({ type: ERROR, payload: error })
 
 export const login = user => dispatch => {
+    console.log("got call login")
     dispatch(loading(true));
-    Axios.post(url, user)
-        .then(({data}) => {
+    authClient.post('/api/consumer/v1/login/', {
+        username: user.email,
+        password: user.password
+    })
+        .then(({ data }) => {
             dispatch(loading(false))
             dispatch(catchError(''))
             console.log(data);
-            localStorage.setItem('auth-token', data.token);
-            dispatch({type: LOGIN, payload: data.user})
+            localStorage.setItem('auth-token', data.key);
+            dispatch({ type: LOGIN, payload: data.user })
         })
         .catch(error => {
             dispatch(loading(false))
-            const erroMsg = error.response.data.msg;
+            const erroMsg = error.response.data;
             console.log(erroMsg)
             dispatch(catchError(erroMsg))
 
@@ -35,7 +43,7 @@ export const login = user => dispatch => {
 export const signup = user => dispatch => {
     dispatch(loading(true))
     Axios.post(url, user)
-        .then(({data}) => {
+        .then(({ data }) => {
             dispatch(loading(false))
             dispatch(catchError(''))
             console.log(data)
@@ -49,7 +57,7 @@ export const signup = user => dispatch => {
 
 export const logout = () => dispatch => {
     localStorage.removeItem('auth-token');
-    dispatch({type: LOGOUT})
+    dispatch({ type: LOGOUT })
 }
 
 
@@ -62,9 +70,9 @@ const init = {
 
 // user reducer 
 const userReducer = (state = init, action) => {
-    switch(action.type){
+    switch (action.type) {
         case LOGIN:
-            return{
+            return {
                 ...state,
                 user: action.payload,
                 isAuthenticated: true
@@ -81,7 +89,7 @@ const userReducer = (state = init, action) => {
                 isLoading: action.payload
             };
         case ERROR:
-            return{
+            return {
                 ...state,
                 error: action.payload
             }
