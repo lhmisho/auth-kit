@@ -7,6 +7,8 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import Link from 'next/link';
+import Fab from '@material-ui/core/Fab';
+import NavigationIcon from '@material-ui/icons/Navigation';
 
 const useStyles = makeStyles(theme => ({
     avatar: {
@@ -18,7 +20,7 @@ const useStyles = makeStyles(theme => ({
         marginTop: theme.spacing(1),
     },
     submit: {
-        margin: theme.spacing(3, 0, 2),
+        margin: theme.spacing(1, 0, 2),
     }
 }));
 
@@ -38,11 +40,10 @@ const OTPSignIn = ({ values, handleSubmit, handleChange, handleBlur, errors, tou
                 <Grid container spacing={2}>
                     <Grid item xs={12} sm={6} md={8} lg={8}>
                         <TextField
-                            autoComplete="fname"
                             name="otpPhone"
                             variant="outlined"
                             fullWidth
-                            id="firstName"
+                            id="otpPhone"
                             label="Send otp"
                             value={values.otpPhone}
                             onChange={handleChange}
@@ -52,15 +53,10 @@ const OTPSignIn = ({ values, handleSubmit, handleChange, handleBlur, errors, tou
                         />
                     </Grid>
                     <Grid item xs={12} sm={6} md={4} lg={4}>
-                        <Button
-                            type="submit"
-                            fullWidth
-                            variant="contained"
-                            color="primary"
-                            className={classes.submit}
-                        >
-                            send
-                            </Button>
+                        <Fab variant="extended" type="submit">
+                            <NavigationIcon className={classes.extendedIcon} />
+                            submit
+                        </Fab>
                     </Grid>
                 </Grid>
             </form>
