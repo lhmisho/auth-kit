@@ -30,7 +30,6 @@ export default function SignIn({ values, handleSubmit, handleChange, handleBlur,
     const classes = useStyles();
     return (
         <>
-
             <Avatar className={classes.avatar}>
                 <LockOutlinedIcon />
             </Avatar>
