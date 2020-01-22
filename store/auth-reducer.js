@@ -58,6 +58,7 @@ export const logout = () => dispatch => {
 
 export const apointment = (values) => dispatch => {
     dispatch(loading(true))
+    console.log(values)
     apiClient.post(`myURl`, {values})
         .then(({data}) => {
             dispatch(loading(false));
