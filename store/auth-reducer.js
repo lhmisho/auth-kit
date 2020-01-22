@@ -3,8 +3,6 @@ const apiClient = Axios.create({
     baseURL: process.env.API_BASE_URL
 });
 
-
-
 const LOGIN = 'LOGIN';
 const SIGNUP = 'SIGNUP';
 const LOGOUT = 'LOGOUT';

@@ -3,7 +3,9 @@ import {makeStyles} from "@material-ui/core/styles/index";
 import Grid from '@material-ui/core/Grid'
 import Paper from '@material-ui/core/Paper';
 import {Formik} from 'formik'
-import Form from '../../../components/apointments/form-one'
+import Form from '../../../components/apointments/form-one';
+import {apointment} from '../../../store/auth-reducer';
+import {useDispatch} from 'react-redux';
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -28,6 +30,8 @@ const BaseForm = () => {
     const [phone, setPhone] = useState('');
     const [age, setAge] = useState('');
     const [gender, setGender] = useState('');
+
+    const dispatch = useDispatch();
 
     console.log(selectedDate)
     console.log(selectedTime)
@@ -56,9 +60,10 @@ const BaseForm = () => {
                     validateOnBlur={true}
                     validateOnChange={false}
                     onSubmit={(values, formikBag) => {
-                    console.log(values);
-                    formikBag.resetForm();
-                }}/>
+                        dispatch(apointment(values));
+                        console.log(values);
+                        formikBag.resetForm();
+                    }}/>
             </Paper>
         </Grid>
     )
