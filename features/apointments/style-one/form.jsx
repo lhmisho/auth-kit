@@ -20,16 +20,39 @@ const BaseForm = () => {
     const classes = useStyles();
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
-    const [mobile, setMobile] = useState('');
     const [hospitalName, setHospitalName] = useState('');
     const [selectedDate, setSelectedDate] = useState(new Date());
-    const [selectedTime, seSselectedTime] = useState(new Date());
+    const [selectedTime, setSelectedTime] = useState(new Date());
+    const [isVisited, setIsVisited] = useState(false);
+    const [phoneCc, setPhoneCc] = useState('');
+    const [phone, setPhone] = useState('');
+    const [age, setAge] = useState('');
+    const [gender, setGender] = useState('');
+
+    console.log(selectedDate)
+    console.log(selectedTime)
     return (
         <Grid item xs={6} style={{backgroundColor: '#fff', height: '100vh'}}>
             <Paper className={classes.paper} style={{height: '90vh'}}>
                 <Formik
                     component={Form}
-                    initialValues={{name, email, mobile, hospitalName, selectedDate, selectedTime, setSelectedDate}}
+                    initialValues={
+                        {
+                            name,
+                            email,
+                            hospitalName,
+                            selectedDate,
+                            selectedTime,
+                            setSelectedDate,
+                            setSelectedTime,
+                            age,
+                            gender,
+                            phone,
+                            phoneCc,
+                            isVisited,
+                            setIsVisited
+                        }
+                    }
                     validateOnBlur={true}
                     validateOnChange={false}
                     onSubmit={(values, formikBag) => {

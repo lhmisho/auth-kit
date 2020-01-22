@@ -1,26 +1,24 @@
 import Axios from 'axios'
-const authClient = Axios.create({
+const apiClient = Axios.create({
     baseURL: process.env.API_BASE_URL
 });
 
 
 
-export const LOGIN = 'LOGIN'
-export const SIGNUP = 'SIGNUP'
-export const LOGOUT = 'LOGOUT'
-export const LOADING = 'LOADING'
-export const ERROR = 'ERROR'
+const LOGIN = 'LOGIN';
+const SIGNUP = 'SIGNUP';
+const LOGOUT = 'LOGOUT';
+const LOADING = 'LOADING';
+const ERROR = 'ERROR';
+const APOINTMENT = 'APOINTMENT';
 
-
-const url = ""
 
 export const loading = (isLoading) => ({ type: LOADING, payload: isLoading })
 export const catchError = (error) => ({ type: ERROR, payload: error })
 
 export const login = user => dispatch => {
-    console.log("got call login")
     dispatch(loading(true));
-    authClient.post('/api/consumer/v1/login/', {
+    apiClient.post('/api/consumer/v1/login/', {
         username: user.email,
         password: user.password
     })
@@ -60,9 +58,26 @@ export const logout = () => dispatch => {
     dispatch({ type: LOGOUT })
 }
 
+export const apointment = (values) => dispatch => {
+    dispatch(loading(true))
+    apiClient.post(`myURl`, {values})
+        .then(({data}) => {
+            dispatch(loading(false));
+            dispatch(catchError(''))
+            dispatch({type: APOINTMENT, payload: data})
+        })
+        .catch(error => {
+            dispatch(loading(false));
+            const erroMsg = error.response.data;
+            dispatch(catchError(erroMsg));
+            dispatch({type: ERROR})
+        })
+}
+
 
 const init = {
     user: {},
+    apointMent: {},
     isAuthenticated: false,
     isLoading: false,
     error: ''
@@ -92,6 +107,11 @@ const userReducer = (state = init, action) => {
             return {
                 ...state,
                 error: action.payload
+            }
+        case APOINTMENT:
+            return{
+                ...state,
+                apointment: action.payload
             }
         default:
             return state;
