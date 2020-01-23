@@ -4,12 +4,10 @@ import TextField from '@material-ui/core/TextField';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 
-export default function AddressForm({values, handleSubmit, handleChange, handleBlur, errors, touched, nextStep}) {
-    console.log(nextStep)
+export default function AddressForm({values, handleSubmit, handleChange, handleBlur, errors, touched}) {
     return (
         <>
-
-            <form>
+            <form onSubmit={handleSubmit}>
                 <Grid container spacing={3}>
                     <Grid item xs={12} sm={6}>
                         <TextField

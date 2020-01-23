@@ -1,42 +1,30 @@
-import React from 'react';
+import Reaact, {useState} from 'react'
+import {Formik} from 'formik'
 import Typography from '@material-ui/core/Typography';
-import Grid from '@material-ui/core/Grid';
-import TextField from '@material-ui/core/TextField';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
+import PaymentForm from '../../../components/checkout/payment-form'
 
-export default function PaymentForm() {
+const Form = () => {
+    const [cardName, setCardName] = useState('');
+    const [cardNumber, setCardNumber] = useState('');
+    const [cvv, setCvv] = useState('');
+    const [expDate, setExpDate] = useState('');
+    const [isSaveCard, setIsSaveCard] = useState('');
+
     return (
-        <React.Fragment>
+        <>
             <Typography variant="h6" gutterBottom>
                 Payment method
             </Typography>
-            <Grid container spacing={3}>
-                <Grid item xs={12} md={6}>
-                    <TextField required id="cardName" label="Name on card" fullWidth />
-                </Grid>
-                <Grid item xs={12} md={6}>
-                    <TextField required id="cardNumber" label="Card number" fullWidth />
-                </Grid>
-                <Grid item xs={12} md={6}>
-                    <TextField required id="expDate" label="Expiry date" fullWidth />
-                </Grid>
-                <Grid item xs={12} md={6}>
-                    <TextField
-                        required
-                        id="cvv"
-                        label="CVV"
-                        helperText="Last three digits on signature strip"
-                        fullWidth
-                    />
-                </Grid>
-                <Grid item xs={12}>
-                    <FormControlLabel
-                        control={<Checkbox color="secondary" name="saveCard" value="yes" />}
-                        label="Remember credit card details for next time"
-                    />
-                </Grid>
-            </Grid>
-        </React.Fragment>
-    );
+            <Formik
+                component={PaymentForm}
+                initialValues={{cardName, cardNumber, cvv, expDate, isSaveCard}}
+                validateOnBlur={true}
+                validateOnChange={false}
+                onSubmit={(values, formikBag) => {
+                    console.log(values)
+                }}
+            />
+        </>
+    )
 }
+export default Form

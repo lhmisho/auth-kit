@@ -20,7 +20,7 @@ const Form = () => {
             </Typography>
             <Formik
                 component={AddressForm}
-                initialValues={{firstName, lastName, address1, address2, city, country, state, zipcode}}
+                initialValues={{firstName, lastName, address1, address2, city, country, state, zipcode, isSaveAddress}}
                 validateOnBlur={true}
                 validateOnChange={false}
                 onSubmit={(values, formikBag) => {
