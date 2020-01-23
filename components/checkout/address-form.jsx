@@ -1,14 +1,16 @@
-import React from 'react'
+import React from 'react';
+import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
-import Grid from '@material-ui/core/Grid';
 
-const AddressForm = ({values, handleSubmit, handleChange, handleBlur, errors, touched}) => {
+export default function AddressForm({values, handleSubmit, handleChange, handleBlur, errors, touched, nextStep}) {
+    console.log(nextStep)
     return (
         <>
-            <Grid container spacing={3}>
-                <form onSubmit={handleSubmit}>
+
+            <form>
+                <Grid container spacing={3}>
                     <Grid item xs={12} sm={6}>
                         <TextField
                             required
@@ -17,6 +19,11 @@ const AddressForm = ({values, handleSubmit, handleChange, handleBlur, errors, to
                             label="First name"
                             fullWidth
                             autoComplete="fname"
+                            value={values.firstName}
+                            onChange={handleChange}
+                            onBlur={handleBlur}
+                            error={errors.email && touched.email ? true : false}
+                            helperText={errors.email ? errors.email : ''}
                         />
                     </Grid>
                     <Grid item xs={12} sm={6}>
@@ -27,6 +34,11 @@ const AddressForm = ({values, handleSubmit, handleChange, handleBlur, errors, to
                             label="Last name"
                             fullWidth
                             autoComplete="lname"
+                            value={values.lastName}
+                            onChange={handleChange}
+                            onBlur={handleBlur}
+                            error={errors.lastName && touched.lastName ? true : false}
+                            helperText={errors.lastName ? errors.lastName : ''}
                         />
                     </Grid>
                     <Grid item xs={12}>
@@ -37,6 +49,11 @@ const AddressForm = ({values, handleSubmit, handleChange, handleBlur, errors, to
                             label="Address line 1"
                             fullWidth
                             autoComplete="billing address-line1"
+                            value={values.address1}
+                            onChange={handleChange}
+                            onBlur={handleBlur}
+                            error={errors.address1 && touched.address1 ? true : false}
+                            helperText={errors.address1 ? errors.address1 : ''}
                         />
                     </Grid>
                     <Grid item xs={12}>
@@ -46,6 +63,11 @@ const AddressForm = ({values, handleSubmit, handleChange, handleBlur, errors, to
                             label="Address line 2"
                             fullWidth
                             autoComplete="billing address-line2"
+                            value={values.address2}
+                            onChange={handleChange}
+                            onBlur={handleBlur}
+                            error={errors.address2 && touched.address2 ? true : false}
+                            helperText={errors.address2 ? errors.address2 : ''}
                         />
                     </Grid>
                     <Grid item xs={12} sm={6}>
@@ -56,10 +78,25 @@ const AddressForm = ({values, handleSubmit, handleChange, handleBlur, errors, to
                             label="City"
                             fullWidth
                             autoComplete="billing address-level2"
+                            value={values.city}
+                            onChange={handleChange}
+                            onBlur={handleBlur}
+                            error={errors.city && touched.city ? true : false}
+                            helperText={errors.city ? errors.city : ''}
                         />
                     </Grid>
                     <Grid item xs={12} sm={6}>
-                        <TextField id="state" name="state" label="State/Province/Region" fullWidth/>
+                        <TextField
+                            id="state"
+                            name="state"
+                            label="State/Province/Region"
+                            fullWidth
+                            value={values.state}
+                            onChange={handleChange}
+                            onBlur={handleBlur}
+                            error={errors.state && touched.state ? true : false}
+                            helperText={errors.state ? errors.state : ''}
+                        />
                     </Grid>
                     <Grid item xs={12} sm={6}>
                         <TextField
@@ -69,6 +106,11 @@ const AddressForm = ({values, handleSubmit, handleChange, handleBlur, errors, to
                             label="Zip / Postal code"
                             fullWidth
                             autoComplete="billing postal-code"
+                            value={values.zipcode}
+                            onChange={handleChange}
+                            onBlur={handleBlur}
+                            error={errors.zipcode && touched.zipcode ? true : false}
+                            helperText={errors.zipcode ? errors.zipcode : ''}
                         />
                     </Grid>
                     <Grid item xs={12} sm={6}>
@@ -79,6 +121,11 @@ const AddressForm = ({values, handleSubmit, handleChange, handleBlur, errors, to
                             label="Country"
                             fullWidth
                             autoComplete="billing country"
+                            value={values.address1}
+                            onChange={handleChange}
+                            onBlur={handleBlur}
+                            error={errors.address1 && touched.address1 ? true : false}
+                            helperText={errors.address1 ? errors.address1 : ''}
                         />
                     </Grid>
                     <Grid item xs={12}>
@@ -87,9 +134,8 @@ const AddressForm = ({values, handleSubmit, handleChange, handleBlur, errors, to
                             label="Use this address for payment details"
                         />
                     </Grid>
-                </form>
-            </Grid>
+                </Grid>
+            </form>
         </>
     );
-};
-export default AddressForm
+}
