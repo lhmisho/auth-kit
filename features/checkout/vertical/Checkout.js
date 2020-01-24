@@ -74,7 +74,7 @@ export default function Checkout() {
                     <Typography component="h1" variant="h4" align="center">
                         Checkout
                     </Typography>
-                    <Stepper activeStep={activeStep} className={classes.stepper}>
+                    <Stepper activeStep={activeStep} className={classes.stepper} orientation="vertical">
                         {steps.map(label => (
                             <Step key={label}>
                                 <StepLabel>{label}</StepLabel>
