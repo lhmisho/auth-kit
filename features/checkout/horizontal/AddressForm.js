@@ -3,19 +3,28 @@ import AddressForm from '../../../components/checkout/address-form'
 import Typography from '@material-ui/core/Typography';
 import { Formik } from 'formik'
 import { checkoutAddressFormValidate } from "../../../utils/validation/validate"
+import {addAddress} from '../../../store/reducers/checkout-reducer'
+import {useDispatch, useSelector, connect} from 'react-redux'
 
 const Form = (props) => {
-    const [firstName, setFirstName] = useState('');
-    const [lastName, setLastName] = useState('');
-    const [address1, setAddress1] = useState('');
-    const [address2, setAddress2] = useState('');
-    const [city, setCity] = useState('');
-    const [state, setState] = useState('');
-    const [country, setCountry] = useState('');
-    const [zipcode, setZipcode] = useState('');
-    const [isSaveAddress, setIsSaveAddress] = useState('');
+    const dispatch = useDispatch();
+    const address = useSelector(state => state.checkout.address)
 
-    console.log(props)
+    const [firstName, setFirstName] = useState(address.firstName);
+    const [lastName, setLastName] = useState(address.lastName);
+    const [address1, setAddress1] = useState(address.address1);
+    const [address2, setAddress2] = useState(address.address2);
+    const [city, setCity] = useState(address.city);
+    const [state, setState] = useState(address.state);
+    const [country, setCountry] = useState(address.country);
+    const [zipcode, setZipcode] = useState(address.zipcode);
+    const [isSaveAddress, setIsSaveAddress] = useState(address.isSaveAddress);
+
+    // console.log("=========================")
+    // console.log(address)
+    // console.log(props)
+    // console.log("=========================")
+
     return(
         <>
             <Typography variant="h6" gutterBottom>
@@ -31,12 +40,14 @@ const Form = (props) => {
                     if(values.firstName !== "lokman"){
                         formikBag.setErrors({firstName: 'Please provide your name as lokman'})
                     }else {
-                        console.log(values)
-                        props.handleNext()
-                        formikBag.resetForm()
+                        console.log(values);
+                        dispatch(addAddress(values));
+                        props.handleNext();
+                        formikBag.resetForm();
                     }
                 }} />
         </>
     )
 }
+
 export default Form

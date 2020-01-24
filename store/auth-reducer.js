@@ -3,12 +3,12 @@ const apiClient = Axios.create({
     baseURL: process.env.API_BASE_URL
 });
 
-const LOGIN = 'LOGIN';
+const APOINTMENT = 'APOINTMENT';
+const LOADING = 'LOADING';
 const SIGNUP = 'SIGNUP';
 const LOGOUT = 'LOGOUT';
-const LOADING = 'LOADING';
 const ERROR = 'ERROR';
-const APOINTMENT = 'APOINTMENT';
+const LOGIN = 'LOGIN';
 
 
 export const loading = (isLoading) => ({ type: LOADING, payload: isLoading })

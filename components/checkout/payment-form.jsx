@@ -54,6 +54,7 @@ const PaymentForm = ({values, handleSubmit, handleChange, handleBlur, errors, to
                         label="Expiry date"
                         fullWidth
                         name="expDate"
+                        placeholder="mm/yy"
                         value={values.expDate}
                         onChange={handleChange}
                         onBlur={handleBlur}
@@ -68,6 +69,7 @@ const PaymentForm = ({values, handleSubmit, handleChange, handleBlur, errors, to
                         helperText="Last three digits on signature strip"
                         fullWidth
                         name="cvv"
+                        placeholder="232"
                         value={values.cvv}
                         onChange={handleChange}
                         onBlur={handleBlur}
