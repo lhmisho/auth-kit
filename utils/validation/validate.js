@@ -36,3 +36,10 @@ export const checkoutAddressFormValidate = yup.object().shape({
     country: yup.string().required("Plase provide your country!"),
     zipcode: yup.string().required("Plase provide your zipcode!")
 })
+
+export const checkoutPaymentFormValidate = yup.object().shape({
+    cardName: yup.string().required("Please provide your card name!"),
+    cardNumber: yup.number().required("Please provide your card number"),
+    expDate: yup.string().required("Please provide your card exp date"),
+    cvv: yup.string().required("Please provide your card CVV")
+})

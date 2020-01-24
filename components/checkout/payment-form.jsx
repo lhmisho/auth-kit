@@ -24,22 +24,22 @@ const PaymentForm = ({values, handleSubmit, handleChange, handleBlur, errors, to
             <Grid container spacing={3}>
                 <Grid item xs={12} md={6}>
                     <TextField
+                        fullWidth
                         id="cardName"
                         label="Name on card"
-                        name="cradName"
+                        name="cardName"
                         value={values.cardName}
                         onChange={handleChange}
                         onBlur={handleBlur}
                         error={errors.cardName && touched.cardName ? true : false}
                         helperText={errors.cardName ? errors.cardName : ''}
-                        fullWidth
                     />
                 </Grid>
                 <Grid item xs={12} md={6}>
                     <TextField
+                        fullWidth
                         id="cardNumber"
                         label="Card number"
-                        fullWidth
                         name="cardNumber"
                         value={values.cardNumber}
                         onChange={handleChange}

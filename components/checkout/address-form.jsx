@@ -40,10 +40,10 @@ export default function AddressForm({values, handleSubmit, handleChange, handleB
                     </Grid>
                     <Grid item xs={12} sm={6}>
                         <TextField
+                            fullWidth
                             id="lastName"
                             name="lastName"
                             label="Last name"
-                            fullWidth
                             autoComplete="lname"
                             value={values.lastName}
                             onChange={handleChange}
@@ -54,10 +54,10 @@ export default function AddressForm({values, handleSubmit, handleChange, handleB
                     </Grid>
                     <Grid item xs={12}>
                         <TextField
+                            fullWidth
                             id="address1"
                             name="address1"
                             label="Address line 1"
-                            fullWidth
                             autoComplete="billing address-line1"
                             value={values.address1}
                             onChange={handleChange}
@@ -68,10 +68,10 @@ export default function AddressForm({values, handleSubmit, handleChange, handleB
                     </Grid>
                     <Grid item xs={12}>
                         <TextField
+                            fullWidth
                             id="address2"
                             name="address2"
                             label="Address line 2"
-                            fullWidth
                             autoComplete="billing address-line2"
                             value={values.address2}
                             onChange={handleChange}
@@ -82,10 +82,10 @@ export default function AddressForm({values, handleSubmit, handleChange, handleB
                     </Grid>
                     <Grid item xs={12} sm={6}>
                         <TextField
+                            fullWidth
                             id="city"
                             name="city"
                             label="City"
-                            fullWidth
                             autoComplete="billing address-level2"
                             value={values.city}
                             onChange={handleChange}
@@ -96,10 +96,10 @@ export default function AddressForm({values, handleSubmit, handleChange, handleB
                     </Grid>
                     <Grid item xs={12} sm={6}>
                         <TextField
+                            fullWidth
                             id="state"
                             name="state"
                             label="State/Province/Region"
-                            fullWidth
                             value={values.state}
                             onChange={handleChange}
                             onBlur={handleBlur}
@@ -109,10 +109,10 @@ export default function AddressForm({values, handleSubmit, handleChange, handleB
                     </Grid>
                     <Grid item xs={12} sm={6}>
                         <TextField
+                            fullWidth
                             id="zip"
                             name="zipcode"
                             label="Zip / Postal code"
-                            fullWidth
                             autoComplete="billing postal-code"
                             value={values.zipcode}
                             onChange={handleChange}
@@ -123,10 +123,10 @@ export default function AddressForm({values, handleSubmit, handleChange, handleB
                     </Grid>
                     <Grid item xs={12} sm={6}>
                         <TextField
+                            fullWidth
                             id="country"
                             name="country"
                             label="Country"
-                            fullWidth
                             autoComplete="billing country"
                             value={values.country}
                             onChange={handleChange}

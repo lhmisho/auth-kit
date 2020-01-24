@@ -35,7 +35,7 @@ const Form = (props) => {
                         props.handleNext()
                         formikBag.resetForm()
                     }
-                }}/>
+                }} />
         </>
     )
 }
