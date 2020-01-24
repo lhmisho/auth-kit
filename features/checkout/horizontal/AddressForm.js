@@ -2,6 +2,8 @@ import React, {useState} from 'react'
 import AddressForm from '../../../components/checkout/address-form'
 import Typography from '@material-ui/core/Typography';
 import { Formik } from 'formik'
+import { checkoutAddressFormValidate } from "../../../utils/validation/validate"
+
 const Form = (props) => {
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
@@ -22,11 +24,17 @@ const Form = (props) => {
             <Formik
                 component={AddressForm}
                 initialValues={{firstName, lastName, address1, address2, city, country, state, zipcode, isSaveAddress}}
+                validationSchema={checkoutAddressFormValidate}
                 validateOnBlur={true}
                 validateOnChange={false}
                 onSubmit={(values, formikBag) => {
-                    console.log(values)
-                    props.handleNext()
+                    if(values.firstName !== "lokman"){
+                        formikBag.setErrors({firstName: 'Please provide your name as lokman'})
+                    }else {
+                        console.log(values)
+                        props.handleNext()
+                        formikBag.resetForm()
+                    }
                 }}/>
         </>
     )

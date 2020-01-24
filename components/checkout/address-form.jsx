@@ -19,13 +19,13 @@ const useStyles = makeStyles(theme => ({
 
 export default function AddressForm({values, handleSubmit, handleChange, handleBlur, errors, touched}) {
     const classes = useStyles();
+    console.log(errors)
     return (
         <>
             <form onSubmit={handleSubmit}>
                 <Grid container spacing={3}>
                     <Grid item xs={12} sm={6}>
                         <TextField
-                            required
                             id="firstName"
                             name="firstName"
                             label="First name"
@@ -34,13 +34,12 @@ export default function AddressForm({values, handleSubmit, handleChange, handleB
                             value={values.firstName}
                             onChange={handleChange}
                             onBlur={handleBlur}
-                            error={errors.email && touched.email ? true : false}
-                            helperText={errors.email ? errors.email : ''}
+                            error={errors.firstName && touched.firstName ? true : false}
+                            helperText={errors.firstName ? errors.firstName : ''}
                         />
                     </Grid>
                     <Grid item xs={12} sm={6}>
                         <TextField
-                            required
                             id="lastName"
                             name="lastName"
                             label="Last name"
@@ -55,7 +54,6 @@ export default function AddressForm({values, handleSubmit, handleChange, handleB
                     </Grid>
                     <Grid item xs={12}>
                         <TextField
-                            required
                             id="address1"
                             name="address1"
                             label="Address line 1"
@@ -84,7 +82,6 @@ export default function AddressForm({values, handleSubmit, handleChange, handleB
                     </Grid>
                     <Grid item xs={12} sm={6}>
                         <TextField
-                            required
                             id="city"
                             name="city"
                             label="City"
@@ -112,7 +109,6 @@ export default function AddressForm({values, handleSubmit, handleChange, handleB
                     </Grid>
                     <Grid item xs={12} sm={6}>
                         <TextField
-                            required
                             id="zip"
                             name="zipcode"
                             label="Zip / Postal code"
@@ -127,7 +123,6 @@ export default function AddressForm({values, handleSubmit, handleChange, handleB
                     </Grid>
                     <Grid item xs={12} sm={6}>
                         <TextField
-                            required
                             id="country"
                             name="country"
                             label="Country"

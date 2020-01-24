@@ -26,3 +26,13 @@ export const loginTwoValidate = yup.object().shape({
     email: yup.string().email().required(),
     password: yup.string().min(6).required()
 })
+
+
+export const checkoutAddressFormValidate = yup.object().shape({
+    firstName: yup.string().required("Please provide your first name"),
+    lastName: yup.string().required("Please provide your last name"),
+    address1: yup.string().required("Plase provide your address!"),
+    city: yup.string().required("Plase provide your city!"),
+    country: yup.string().required("Plase provide your country!"),
+    zipcode: yup.string().required("Plase provide your zipcode!")
+})
