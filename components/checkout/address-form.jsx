@@ -3,8 +3,22 @@ import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
+import Button from '@material-ui/core/Button';
+import { makeStyles } from '@material-ui/core/styles'
+
+const useStyles = makeStyles(theme => ({
+    buttons: {
+        display: 'flex',
+        justifyContent: 'flex-end',
+    },
+    button: {
+        marginTop: theme.spacing(3),
+        marginLeft: theme.spacing(1),
+    },
+}));
 
 export default function AddressForm({values, handleSubmit, handleChange, handleBlur, errors, touched}) {
+    const classes = useStyles();
     return (
         <>
             <form onSubmit={handleSubmit}>
@@ -100,7 +114,7 @@ export default function AddressForm({values, handleSubmit, handleChange, handleB
                         <TextField
                             required
                             id="zip"
-                            name="zip"
+                            name="zipcode"
                             label="Zip / Postal code"
                             fullWidth
                             autoComplete="billing postal-code"
@@ -119,11 +133,11 @@ export default function AddressForm({values, handleSubmit, handleChange, handleB
                             label="Country"
                             fullWidth
                             autoComplete="billing country"
-                            value={values.address1}
+                            value={values.country}
                             onChange={handleChange}
                             onBlur={handleBlur}
-                            error={errors.address1 && touched.address1 ? true : false}
-                            helperText={errors.address1 ? errors.address1 : ''}
+                            error={errors.country && touched.country ? true : false}
+                            helperText={errors.country ? errors.country : ''}
                         />
                     </Grid>
                     <Grid item xs={12}>
@@ -132,6 +146,13 @@ export default function AddressForm({values, handleSubmit, handleChange, handleB
                             label="Use this address for payment details"
                         />
                     </Grid>
+                    <Button
+                        type="submit"
+                        variant="contained"
+                        color="primary"
+                    >
+                        Next
+                    </Button>
                 </Grid>
             </form>
         </>

@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import AddressForm from '../../../components/checkout/address-form'
 import Typography from '@material-ui/core/Typography';
 import { Formik } from 'formik'
-const Form = () => {
+const Form = (props) => {
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [address1, setAddress1] = useState('');
@@ -13,6 +13,7 @@ const Form = () => {
     const [zipcode, setZipcode] = useState('');
     const [isSaveAddress, setIsSaveAddress] = useState('');
 
+    console.log(props)
     return(
         <>
             <Typography variant="h6" gutterBottom>
@@ -25,6 +26,7 @@ const Form = () => {
                 validateOnChange={false}
                 onSubmit={(values, formikBag) => {
                     console.log(values)
+                    props.handleNext()
                 }}/>
         </>
     )

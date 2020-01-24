@@ -3,8 +3,22 @@ import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
+import Button from '@material-ui/core/Button'
+import {makeStyles} from '@material-ui/core/styles'
+
+const useStyles = makeStyles(theme => ({
+    buttons: {
+        display: 'flex',
+        justifyContent: 'flex-end',
+    },
+    button: {
+        marginTop: theme.spacing(3),
+        marginLeft: theme.spacing(1),
+    },
+}));
 
 const PaymentForm = ({values, handleSubmit, handleChange, handleBlur, errors, touched}) => {
+    const classes = useStyles();
     return (
         <form onSubmit={handleSubmit}>
             <Grid container spacing={3}>
@@ -67,6 +81,21 @@ const PaymentForm = ({values, handleSubmit, handleChange, handleBlur, errors, to
                         label="Remember credit card details for next time"
                     />
                 </Grid>
+                <div className={classes.buttons}>
+                    <Button onClick={() => {
+                        values.handleBack()
+                    }} className={classes.button}>
+                        Back
+                    </Button>
+                    <Button
+                        variant="contained"
+                        color="primary"
+                        type="submit"
+                        className={classes.button}
+                    >
+                        Next
+                    </Button>
+                </div>
             </Grid>
         </form>
     );
