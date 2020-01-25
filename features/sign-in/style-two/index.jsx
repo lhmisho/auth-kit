@@ -1,9 +1,10 @@
 import React, {useState} from 'react'
 import { Formik } from 'formik'
 import Form from '../../../components/SignIn'
-import { loginTwoValidate } from '../../../utils/validation'
+import { loginTwoValidate } from '../../../utils/validation/validate'
 import { useDispatch, useSelector, connect} from 'react-redux'
 import {login} from '../../../store/auth-reducer'
+
 const LoginForm = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
