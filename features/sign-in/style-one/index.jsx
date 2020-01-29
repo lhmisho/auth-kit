@@ -1,15 +1,19 @@
 import React, { useState } from 'react'
 import {useDispatch, useSelector, connect} from 'react-redux'
-import Form from '../../../components/SignIn'
 import { Formik } from 'formik'
 import { loginOneValidate } from '../../../utils/validation/validate'
 import { login } from '../../../store/auth-reducer'
+import Form from '../../../components/SignIn'
 
 
+const values = {
+    email: '',
+    password: ''
+}
 
 const LoginForm = (props) => {
-    const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
+    // const [email, setEmail] = useState('')
+    // const [password, setPassword] = useState('')
     const dispatch = useDispatch();
     const user = useSelector(state => state.user)
     console.log(user)
@@ -19,9 +23,11 @@ const LoginForm = (props) => {
         <React.Fragment>
             <Formik
                 component={Form}
-                initialValues={{ email, password }}
+                enableReinitialize={true}
+                initialValues={values}
                 validationSchema={loginOneValidate}
                 validateOnBlur={true}
+                initialErrors={user.error}
                 validateOnChange={false}
                 onSubmit={(values, formikBag) => {
                     dispatch(login(values))
@@ -32,8 +38,4 @@ const LoginForm = (props) => {
     )
 }
 
-const mapStateToProps = state =>({
-    errors: state.user.error
-})
-
-export default connect(mapStateToProps, {})(LoginForm)
+export default LoginForm

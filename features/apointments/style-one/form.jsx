@@ -34,7 +34,7 @@ const BaseForm = () => {
     const dispatch = useDispatch();
 
     console.log(selectedDate)
-    console.log(selectedTime)
+    // console.log(selectedTime)
     return (
         <Grid item xs={6} style={{backgroundColor: '#fff', height: '100vh'}}>
             <Paper className={classes.paper} style={{height: '90vh'}}>
@@ -58,6 +58,7 @@ const BaseForm = () => {
                         }
                     }
                     validateOnBlur={true}
+                    enableReinitialize={true}
                     validateOnChange={false}
                     onSubmit={(values, formikBag) => {
                         dispatch(apointment(values));

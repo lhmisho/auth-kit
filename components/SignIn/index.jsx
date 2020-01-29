@@ -84,7 +84,7 @@ export default function SignIn({ values, handleSubmit, handleChange, handleBlur,
                         </Link>
                     </Grid>
                     <Grid item>
-                        <Link href="/sighin">
+                        <Link href="/signup/flat">
                             <a variant="body2">{"Don't have an account? Sign Up"}</a>
                         </Link>
                     </Grid>

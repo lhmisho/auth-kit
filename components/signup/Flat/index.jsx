@@ -1,7 +1,8 @@
 import React from 'react';
+import Link from 'next/link'
+
 import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -17,7 +18,6 @@ import LocationCityOutlinedIcon from '@material-ui/icons/LocationCityOutlined';
 import BorderClearOutlinedIcon from '@material-ui/icons/BorderClearOutlined';
 
 // import AccountCircle from '@material-ui/icons/AccountCircle';
-import Checkbox from '@material-ui/core/Checkbox';
 import Button from '../../shared/CustomButtons/Button';
 import { makeStyles } from '@material-ui/core/styles'
 
@@ -268,11 +268,13 @@ const Form = ({ values, handleSubmit, handleChange, handleBlur, errors, touched 
                             }}
                         />
                     </Grid>
-                    <Grid xs={12}>
-                        {/* <Button className={classes.button} variant="contained" color="primary">
-                            SUBMIT
-                        </Button> */}
+                    <Grid item xs={6}>
                         <Button type="button" color="success">SUBMIT</Button>
+                    </Grid>
+                    <Grid item xs={6}>
+                        <Link href="/signin/sign-in-one">
+                            <a variant="body2">{"Already have an account? Sign Up"}</a>
+                        </Link>
                     </Grid>
                 </Grid>
             </form>
