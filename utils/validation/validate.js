@@ -28,6 +28,15 @@ export const loginTwoValidate = yup.object().shape({
 })
 
 
+export const simpleSignupValidate = yup.object().shape({
+    fullName: yup.string.email().required("Pleasae provide your Full Name"),
+    email: yup.string().email().required("Please provide your Email!"),
+    phone: yup.number().min(7).max(13).required("Please you phone"),
+    password: yup.string().min(6, "Password must be six contains six character").required("Please provide your password"),
+    password2: Yup.string()
+     .oneOf([Yup.ref('password'), null], 'Passwords must match').required("Please confirm your password!")
+})
+
 export const checkoutAddressFormValidate = yup.object().shape({
     firstName: yup.string().required("Please provide your first name"),
     lastName: yup.string().required("Please provide your last name"),
