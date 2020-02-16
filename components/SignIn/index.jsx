@@ -6,7 +6,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
-import Button from '@material-ui/core/Button';
+// import Button from '@material-ui/core/Button';
+import Button from '../../components/shared/CustomButtons/Button'
 import Grid from '@material-ui/core/Grid';
 import Link from 'next/link';
 import SocialSignIn from '../icons/social-sign-in'
@@ -72,7 +73,7 @@ export default function SignIn({ values, handleSubmit, handleChange, handleBlur,
                     type="submit"
                     fullWidth
                     variant="contained"
-                    color="primary"
+                    color="info"
                     className={classes.submit}
                 >
                     Sign In

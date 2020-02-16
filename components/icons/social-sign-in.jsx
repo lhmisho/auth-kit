@@ -1,8 +1,9 @@
 import React from 'react'
 import Fab from '@material-ui/core/Fab';
 import FacebookIcon from '@material-ui/icons/Facebook';
-import TwitterIcon from '@material-ui/icons/Twitter';
+import Twitter from '@material-ui/icons/Twitter'
 import GitHubIcon from '@material-ui/icons/GitHub';
+import Button from '../shared/CustomButtons/Button';
 import { makeStyles } from '@material-ui/core/styles';
 import IconButton from '@material-ui/core/IconButton'
 const useStyles = makeStyles(theme => ({
@@ -23,29 +24,18 @@ const SocialSignIn = () => {
     let classes = useStyles()
     return (
         <div className={classes.root}>
-            <Fab
-                variant="extended"
-                size="medium"
-                color="primary"
-                aria-label="add"
-                className={classes.margin}
-            >
-                <FacebookIcon className={classes.extendedIcon} />
+            <Button color="facebook" size="sm">
+                <FacebookIcon/>
                 Facebook
-            </Fab>
-            <Fab
-                variant="extended"
-                size="medium"
-                color="primary"
-                aria-label="add"
-                className={classes.margin}
-            >
-                {/* <TwitterIcon className={classes.extendedIcon} /> */}
+            </Button>
+            <Button color="twitter" size="sm">
+                <Twitter/>
                 Twitter
-            </Fab>
-            <IconButton variant="primary" aria-label="delete">
+            </Button>
+            <Button color="github" size="sm">
                 <GitHubIcon />
-            </IconButton>
+                Git
+            </Button>
         </div>
     )
 }
